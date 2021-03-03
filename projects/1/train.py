@@ -42,8 +42,7 @@ logging.info(f"TRAIN_PATH {train_path}")
 read_table_opts = dict(sep="\t", names=fields, index_col=False)
 df = pd.read_table(train_path, **read_table_opts)
 
-df_x = df.drop(['label'], axis=1)
-df_y = df[['label']]
+df_x, df_y = df.iloc[:, 2:], df.iloc[:, 1]
 
 #split train/test
 #X_train, X_test, y_train, y_test = train_test_split(

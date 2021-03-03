@@ -6,7 +6,9 @@ from glob import glob
 import logging
 
 sys.path.append('.')
-from model import fields
+
+from model import categorical_features, numeric_features
+fields = ["id"] + numeric_features + categorical_features
 
 #
 # Init the logger
@@ -27,18 +29,6 @@ if len(filter_cond_files) != 1:
     sys.exit(1)
 
 exec(open(filter_cond_files[0]).read())
-
-#
-# dataset fields
-#
-#fields = """doc_id,hotel_name,hotel_url,street,city,state,country,zip,class,price,
-#num_reviews,CLEANLINESS,ROOM,SERVICE,LOCATION,VALUE,COMFORT,overall_ratingsource""".replace("\n",'').split(",")
-
-#
-# Optional argument
-# If +field option is given, output the id (always first record) and the given field
-# if -field is given, output all but the given field
-#
 
 if len(sys.argv) == 1:
   #by default print all fields
@@ -65,12 +55,12 @@ for line in sys.stdin:
         continue
 
     #unpack into a tuple/dict
-    values = line.rstrip().split(',')
+    values = line.rstrip().split('\t')
     hotel_record = dict(zip(fields, values)) #Hotel(values)
 
     #apply filter conditions
     if filter_cond(hotel_record):
-        output = ",".join([hotel_record[x] for x in outfields])
+        output = "\t".join([hotel_record[x] for x in outfields])
         print(output)
 
 
