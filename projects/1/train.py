@@ -65,3 +65,4 @@ logging.info(f"model score: {model_score:.3f}")
 logging.info("model fitted!")
 dump(model, "{}.joblib".format(proj_id))
 logging.info("dumped!")
+
