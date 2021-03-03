@@ -62,6 +62,6 @@ model_score = model.score(X_test, y_test)
 logging.info(f"model score: {model_score:.3f}")
 
 # save the model
+logging.info("model fitted!")
 dump(model, "{}.joblib".format(proj_id))
-
-
+logging.info("dumped!")
