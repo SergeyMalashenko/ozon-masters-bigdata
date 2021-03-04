@@ -48,6 +48,6 @@ CREATE TEMPORARY EXTERNAL TABLE hw2_test (
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t'
 STORED AS TEXTFILE
-LOCATION /datasets/criteo_test_large_features
+LOCATION /datasets/criteo_test_large_features 
 ;
 
