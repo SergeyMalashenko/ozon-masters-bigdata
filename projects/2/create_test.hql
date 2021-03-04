@@ -1,0 +1,2 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS hw2_test(
+  LOCATION '/user/andrena';
