@@ -5,5 +5,5 @@ CREATE MANAGED TABLE hw2_pred (
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t'
 STORED AS TEXTFILE
-LOCATION SergeyMalashenko_hw2_pred
+LOCATION 'SergeyMalashenko_hw2_pred'
 ;
