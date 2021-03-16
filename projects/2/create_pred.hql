@@ -1,4 +1,4 @@
-CREATE MANAGED TABLE hw2_pred (
+CREATE TABLE hw2_pred (
         id    string,
 	pred  double
 )
