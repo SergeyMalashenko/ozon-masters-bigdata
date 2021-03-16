@@ -21,10 +21,18 @@ logging.info("ARGS {}".format(sys.argv[1:]))
 model = load("2.joblib")
 
 #read and infere
-read_opts=dict(
-        sep='\t', names=["id"] + numeric_features + categorical_features, index_col=False, header=None,
-        iterator=True, chunksize=100
+#read_opts=dict(
+#        sep='\t', names=["id"] + numeric_features + categorical_features, index_col=False, header=None,
+#        iterator=True, chunksize=100
+#)
+
+read_opts = dict(
+    sep='\t', names=["id"] + numeric_features + categorical_features,
+    index_col=False, header=None,
+    iterator=True, chunksize=100,
+    na_values='\\N'
 )
+
 
 logging.info("Predict data ...")
 logging.info(numeric_features    )
