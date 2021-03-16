@@ -1,6 +1,6 @@
 CREATE MANAGED TABLE hw2_pred (
-        id    int,
-	pred  int
+        id    string,
+	pred  double
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t'
