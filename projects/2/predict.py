@@ -18,7 +18,7 @@ logging.info("SCRIPT CALLED AS {}".format(sys.argv[0]))
 logging.info("ARGS {}".format(sys.argv[1:]))
 
 #load the model
-model = load("1.joblib")
+model = load("2.joblib")
 
 #read and infere
 read_opts=dict(
