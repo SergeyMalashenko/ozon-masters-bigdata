@@ -24,13 +24,13 @@ front_node_s, used_node_s = set(), set()
 front_node_s.add(start_node)
 parent_s = defaultdict(list)
 for i in range(0, ITERATIONS):
-    front_sc, used_sc = sc.broadcast(front_node), sc.broadcast(used_node)
+    front_sc, used_sc = sc.broadcast(front_node_s), sc.broadcast(used_node_s)
     if (end_node in used_node_s):
         break
     output = graph_data.filter(lambda x : (x[0] in front_sc.value) and (x[0] not in used_sc.value)).groupByKey().mapValues(list).collect()
     
-    used_node_s.update(front_node)
-    front_node = set()
+    used_node_s.update(front_node_s)
+    front_node_s = set()
     for val in output:
         for item in val[1]:
             parent_s[item].append(val[0])
