@@ -1,10 +1,11 @@
-from pyspark import SparkContext, SparkConf
+from pyspark     import SparkContext, SparkConf
 from collections import defaultdict
+
 import logging
 import sys
 
 conf = SparkConf()
-sc = SparkContext(appName="shortest_path", conf=conf)
+sc = SparkContext(appName="Find shortest path", conf=conf)
 logging.basicConfig(level=logging.DEBUG)
 logging.info("PySpark script logger initialized")
 
@@ -26,7 +27,7 @@ for i in range(0, ITERATIONS):
     front_sc, used_sc = sc.broadcast(front_node), sc.broadcast(used_node)
     if (end_node in used_node_s):
         break
-    output = graph.filter(lambda x : (x[0] in front_sc.value) and (x[0] not in used_sc.value)).groupByKey().mapValues(list).collect()
+    output = graph_data.filter(lambda x : (x[0] in front_sc.value) and (x[0] not in used_sc.value)).groupByKey().mapValues(list).collect()
     
     used_node_s.update(front_node)
     front_node = set()
