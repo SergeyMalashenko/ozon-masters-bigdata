@@ -46,3 +46,4 @@ predictions = model.transform(test)
 predictions.select("id", "prediction").write.save(path_to_save_inference)
 
 spark.stop()
+

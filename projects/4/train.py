@@ -46,3 +46,4 @@ pipeline_model = pipeline.fit(dataset)
 pipeline_model.write().overwrite().save(path_to_save_model)
 
 spark.stop()
+
