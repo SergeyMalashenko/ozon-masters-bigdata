@@ -1,1 +1,1 @@
-export MLFLOW_TRACKING_URI=http://edge:6084
+export MLFLOW_TRACKING_URI=http://edge1:6084

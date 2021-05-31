@@ -88,6 +88,7 @@ def main():
     
     
     #load_model_name = client.search_runs(experiment_id)[0].info.artifact_uri + '/' + args.sklearn_model
+    print(train_path_in)
     df = spark.read.parquet(train_path_in)
     print(df.show())
     from pyspark.sql.functions import expr   
