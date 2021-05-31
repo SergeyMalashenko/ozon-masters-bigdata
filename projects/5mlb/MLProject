@@ -16,7 +16,7 @@ entry_points:
        --master yarn \
        etl.py --train_path_in={train_path_in} --train_path_out={train_path_out};
        hdfs dfs -get {train_path_out}  {train_path_out2};
-       python train.py --model_param1={model_param1} --train_path_in={train_path_out2}/5out --sklearn_model={sklearn_model}"
+       python train.py --model_param1={model_param1} --train_path_in={train_path_out2} --sklearn_model={sklearn_model}"
   etl_predict:
     parameters:
       test_path_in: {type:string, default: path}
