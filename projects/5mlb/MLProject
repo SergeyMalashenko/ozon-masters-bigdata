@@ -16,7 +16,7 @@ entry_points:
        --master yarn \
        etl.py --train_path_in={train_path_in} --train_path_out={train_path_out};
        hdfs dfs -get {train_path_out}  {train_path_out2};
-       python train.py --model_param1={model_param1} --train_path_in={train_path_out2} --sklearn_model={sklearn_model}"
+       python train.py --model_param1={model_param1} --train_path_in={train_path_out2}/5out --sklearn_model={sklearn_model}"
   etl_predict:
     parameters:
       test_path_in: {type:string, default: path}
@@ -32,33 +32,3 @@ entry_points:
        PYSPARK_PYTHON=/opt/conda/envs/dsenv/bin/python3 spark-submit \
        --master yarn \
        predict.py --train_path_in={train_path_out} --predict_path_out={pred_path_out} --sklearn_model={sklearn_model} --model_version={model_version}"
-  predict:
-    parameters:
-      test_path_in: {type:str}
-      sklearn_model: {type:str, default: model5b}
-      model_version: {type: int, default 1}
-      predict_path_out:{type:str, default: path3}
-    command:
-      "python predict.py --train_path_in={train_path_out2} --predict_path_out={predict_path_out} \\
-       --sklearn_model={sklearn_model} --model_version={model_version}"
-
-  train:
-    parameters:
-      train_path_in: {type:string}
-      sklearn_model: {type:string, default: model5b}
-      model_param1: {type: string, default: l2}
-      tmp_file: {type: string, default: ./tmp.p}
-    command:
-      "hdfs dfs -getmerge {train_path_in}  {tmp_file};
-      python train.py --train_path_in={tmp_file} --sklearn_model={sklearn_model} --model_param1={model_param1}"
-
-  etl:
-    parameters:
-      train_path_in: {type:string}
-      train_path_out: {type:string}
-
-    command:
-      "PYSPARK_PYTHON=/opt/conda/envs/dsenv/bin/python3 spark-submit \
-       --master yarn \
-       etl.py --train_path_in={train_path_in} --train_path_out={train_path_out}"
-

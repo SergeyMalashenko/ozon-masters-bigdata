@@ -30,7 +30,7 @@ def parse_args():
     parser.add_argument(
         "--model_version",
         type=str,
-        default='5',
+        default='1',
         help="model ml flow version",
         required=True
     )
@@ -47,9 +47,9 @@ from pyspark.sql.types import *
 
 def main():
     try:
-            args = parse_args()
-            train_path_in = args.train_path_in
-            predict_path_out = args.predict_path_out
+        args = parse_args()
+        train_path_in = args.train_path_in
+        predict_path_out = args.predict_path_out
 
     except:
         print(sys.argv, len(sys.argv))
